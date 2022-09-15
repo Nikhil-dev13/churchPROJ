@@ -230,7 +230,7 @@ class FamilyDescriptionEndpoint(APIView):
     def get(self, request, pk=None):
 
         family = Family.objects.get(pk=request.user.id)
-        people = People.objects.get(family=request.user.id)
+        people = People.objects.filter(family=request.user.id)
 
         family_serializer = FamilySerializer(family)
         people_serializer = PeopleSerializer(people, many=True)
