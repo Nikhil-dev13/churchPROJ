@@ -97,6 +97,8 @@ class People(models.Model):
     middle_name = models.CharField(max_length=255)
     last_name = models.CharField(max_length=255, blank=True)
     age = models.IntegerField(default=1)
+    email = models.TextField(null=True)
+    mobile_number = models.CharField(max_length=25, null=True)
     martial_status = models.CharField(
         choices=(
             ("SINGLE", "SINGLE"),
