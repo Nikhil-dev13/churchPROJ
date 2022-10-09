@@ -71,7 +71,8 @@ class Family(AbstractBaseUser, PermissionsMixin):
     is_staff = models.BooleanField(default=False)
     is_superuser = models.BooleanField(default=False)
     is_admin = models.BooleanField(default=False)
-
+    address = models.TextField(blank=True, null=True)
+    landline = models.CharField(max_length=25, blank=True, null=True)
     USERNAME_FIELD = "family_name"
 
     class Meta:
