@@ -1,9 +1,8 @@
-ARG PYTHON_VERSION=3.10-slim-buster
+FROM python:alpine
 
-FROM python:${PYTHON_VERSION}
-
-ENV PYTHONDONTWRITEBYTECODE 1
-ENV PYTHONUNBUFFERED 1
+RUN apk update \
+    && apk add libpq postgresql-dev \
+    && apk add build-base
 
 RUN mkdir -p /app
 
