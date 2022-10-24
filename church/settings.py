@@ -13,6 +13,7 @@ https://docs.djangoproject.com/en/3.2/ref/settings/
 from pathlib import Path
 from datetime import timedelta
 import os
+import dj_database_url
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
@@ -23,14 +24,14 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
+DEBUG = False
 
 
 # SECURITY WARNING: keep the secret key used in production secret!
 if DEBUG:
     SECRET_KEY = "django-insecure-t4k_154h5%zjp-h^$dzn*7ok356_r+g78c7dw+p8g8i@-gngdt"
 else:
-    SECRET_KEY = os.getenv("secretkeyChurch")
+    SECRET_KEY = os.getenv("SECRET_KEY")
 
 if DEBUG:
     ALLOWED_HOSTS = ["*"]
@@ -105,16 +106,19 @@ WSGI_APPLICATION = "church.wsgi.application"
 #     }
 # }
 
-DATABASES = {
-    "default": {
-        "ENGINE": "django.db.backends.postgresql_psycopg2",
-        "NAME": "church",
-        "USER": "postgres",
-        "PASSWORD": "password123",
-        "HOST": "localhost",
-        "PORT": "5432",
+if DEBUG:
+    DATABASES = {
+        "default": {
+            "ENGINE": "django.db.backends.postgresql_psycopg2",
+            "NAME": "church",
+            "USER": "postgres",
+            "PASSWORD": "password123",
+            "HOST": "localhost",
+            "PORT": "5432",
+        }
     }
-}
+
+DATABASES["default"] = dj_database_url.config(conn_max_age=600)
 
 
 # Password validation
@@ -187,6 +191,6 @@ SIMPLE_JWT = {
     "SLIDING_TOKEN_REFRESH_LIFETIME": timedelta(days=1),
 }
 
-import django_heroku
+# import django_heroku
 
-django_heroku.settings(locals())
+# django_heroku.settings(locals())
