@@ -39,7 +39,7 @@ else:
 if DEBUG:
     ALLOWED_HOSTS = ["*"]
 else:
-    ALLOWED_HOSTS = []
+    ALLOWED_HOSTS = ["*"]
 
 # ALLOWING POST AND PUT REQUEST
 APPEND_SLASH = False
