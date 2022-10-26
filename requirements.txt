@@ -18,3 +18,5 @@ tomli==2.0.1
 typing-extensions==4.3.0
 whitenoise==6.2.0
 django-filter==22.1
+python-dotenv==0.21.0
+gunicorn==20.1.0
