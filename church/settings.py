@@ -202,3 +202,6 @@ SIMPLE_JWT = {
 # import django_heroku
 
 # django_heroku.settings(locals())
+STATIC_URL = "/static/"
+STATIC_ROOT = os.path.join(BASE_DIR, "static-assets", "collected-static")
+STATICFILES_DIRS = (os.path.join(BASE_DIR, "static"),)
